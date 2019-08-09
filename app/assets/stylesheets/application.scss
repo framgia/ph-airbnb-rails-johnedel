@@ -1,0 +1,30 @@
+@import "bootstrap";
+@import "toastr";
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.actions .btn {
+    width: 100%;
+}
+
+.actions .btn-info {
+    background-color: #FF5A5F;
+    border-color: #FF5A5F;
+}
+
+.actions .btn-info:hover {
+    background-color: #fc4c51;
+    border-color: #fc4c51;
+}
+
+.actions .btn-primary {
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+
+.actions .btn-primary:hover {
+    background-color: #304f91;
+    border-color: #304f91;
+}
