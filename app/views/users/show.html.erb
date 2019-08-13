@@ -10,7 +10,11 @@
             <div class="card-header text-white">Verification</div>
             <div class="card-body">
               <ul class="sidebar-list">
-                    <li>Facebook<span class="pull-right icon-babu"><i class="fa fa-check-circle"></i></span></li>
+                    <% if @user.image? %>
+                        <li>Facebook<span class="pull-right icon-babu"><i class="fa fa-check-circle"></i></span></li>
+                    <% else %>
+                         <li>Email<span class="pull-right icon-babu"><i class="fa fa-check-circle"></i></span></li>
+                     <% end %>
                     <li>Phone Number<span class="pull-right icon-babu"><i class="fa fa-check-circle"></i></span></li>
                 </ul>
             </div>
