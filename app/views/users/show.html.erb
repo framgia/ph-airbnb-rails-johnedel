@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="mt-4 col-3"> 
+        <% if @user.image? %>
+             <%= image_tag "http://graph.facebook.com/#{@user.uid}/picture?type=large", class: "avatar-scale" %>
+        <% else %>
+             <%= image_tag gravatar_for(@user), class: "avatar-scale"%>
+        <% end %>
+
+        <div class="card">
+            <div class="card-header text-white">Verification</div>
+            <div class="card-body">
+              <ul class="sidebar-list">
+                    <li>Facebook<span class="pull-right icon-babu"><i class="fa fa-check-circle"></i></span></li>
+                    <li>Phone Number<span class="pull-right icon-babu"><i class="fa fa-check-circle"></i></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 col-9">
+        <h2><%= @user.fullname%> </h2>
+        <h4 class="mt-4">Listings (0)</h4>
+        <h4 class="text-center">There are no listings.</h4>
+
+        <h4 class="mt-4">Reviews From Guests (0)</h4>
+        <h4 class="text-center">There are no reviews.</h4>
+
+        <h4 class="mt-4">Reviews From Hosts (0)</h4>
+        <h4 class="text-center">There are no reviews.</h4>
+    </div>
+</div>
