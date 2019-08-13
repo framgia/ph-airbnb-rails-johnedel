@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "toastr";
+@import "font-awesome";
 
 .form-group {
     margin-bottom: 30px;
@@ -27,4 +28,31 @@
 .actions .btn-primary:hover {
     background-color: #304f91;
     border-color: #304f91;
+}
+
+.card .card-header {
+    background-color: #00A699;
+    border-color: #00A699;
+}
+
+.avatar-scale {
+    width: 100%;
+}
+
+.sidebar-list {
+    list-style-type: none;
+}
+
+.fa-check-circle{ 
+    color: #00A699 
+}
+
+.card-body .btn-danger {
+    background-color: #767676;
+    border-color: #767676;
+}
+
+.card-body .btn-danger:hover {
+    background-color: #484848;
+    border-color: #484848;
 }

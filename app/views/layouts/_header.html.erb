@@ -23,7 +23,7 @@
                             <% if current_user.image %>
                                 <%= image_tag current_user.image, class: "rounded-circle", style: 'height:25px;width:auto;' %>
                             <% else %>
-                                <%= gravatar_for(current_user)%>
+                                <%= image_tag gravatar_for(current_user), class: "rounded-circle", style: 'height:25px;width:auto;' %>
                             <% end %>
                             <%= current_user.fullname %>
                         </a>
@@ -33,7 +33,7 @@
                             <%= link_to "Your Reservations", "#", class:"dropdown-item" %>
                             <%= link_to "Your Trips", "#", class:"dropdown-item" %>
                         <div class="dropdown-divider"></div>
-                            <%= link_to "Edit Profile", "#", class:"dropdown-item" %>    
+                            <%= link_to "Edit Profile", edit_user_registration_path, class:"dropdown-item" %>    
                             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                         </div>
                     </li>
