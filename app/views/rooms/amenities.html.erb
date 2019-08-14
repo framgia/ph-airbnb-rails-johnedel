@@ -1,0 +1,48 @@
+<div class="row">   
+    <div class="col-3">
+        <%= render 'sidebar' %>
+    </div>
+    <div class="col-9">
+        <div class="card mt-4">
+            <div class="card-header text-white">
+                Amenities
+            </div>
+            <div class= "card-body">
+                <div class = "container">
+                    <%= form_for :room, url: ""  do |f| %>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <%= f.check_box :is_tv %> TV
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <%= f.check_box :is_kitchen %> Kitchen
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <%= f.check_box :is_internet %> Internet
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <%= f.check_box :is_heating %> Internet
+                                </div>
+                            </div>
+                             <div class="col-4">
+                                <div class="form-group">
+                                    <%= f.check_box :is_air %> Air Conditioning
+                                </div>
+                            </div>                            
+                        </div>
+                    <% end %>
+                    <div class="action-content">
+                        <%= link_to "Save", "#" , class: "btn btn-info" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
