@@ -63,6 +63,9 @@
     padding: 10px;
     border-radius: .5em;
     color: #767676;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .action-room .btn-info {
@@ -133,4 +136,20 @@
     height: 20px;
     width: 20px;
     border-radius: 2px;
+}
+
+.fa-caret-down { 
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 290px;
+    font-size: 25px;
+    color: #00A699;
+}
+
+.listing-icon .fa-caret-down { 
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 195px;
+    font-size: 25px;
+    color: #00A699;
 }
