@@ -44,7 +44,7 @@
 }
 
 .fa-check-circle{ 
-    color: #00A699 
+    color: #00A699; 
 }
 
 .card-body .btn-danger {
@@ -55,4 +55,101 @@
 .card-body .btn-danger:hover {
     background-color: #484848;
     border-color: #484848;
+}
+
+.form-group select {
+    width: 100%;
+    border: 1px solid #00A699;
+    padding: 10px;
+    border-radius: .5em;
+    color: #767676;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.action-room .btn-info {
+    background-color: #FF5A5F;
+    border-color: #FF5A5F;
+    width: 70%;
+}
+
+.action-room .btn-info:hover {
+    background-color: #fc4c51;
+    border-color: #fc4c51;
+}
+
+.sidebar-list li {
+    padding: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0;
+}
+
+.sidebar-link:hover, .sidebar-link:focus {
+    color: black;
+    text-decoration: none;
+}
+  
+.active.sidebar-link {
+    color: black;
+    font-weight: 100;
+}
+
+.action-sidebar .btn-info {
+    background-color: #FF5A5F;
+    border-color: #FF5A5F;
+    width: 100%;
+}
+
+.action-sidebar .btn-info:hover {
+    background-color: #fc4c51;
+    border-color: #fc4c51;
+}
+
+.form-group input {
+    width: 100%;
+    border: 1px solid #00A699;
+    padding: 10px;
+    border-radius: .5em;
+    color: #767676;
+}
+  
+.form-group textarea {
+    border: 1px solid #00A699;
+    padding: 10px;
+    border-radius: .5em;
+    color: #767676;
+  }
+
+.action-content .btn-info {
+    background-color: #FF5A5F;
+    border-color: #FF5A5F;
+}
+
+.action-content .btn-info:hover {
+    background-color: #fc4c51;
+    border-color: #fc4c51;
+}
+
+.form-group input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    border-radius: 2px;
+}
+
+.fa-caret-down { 
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 290px;
+    font-size: 25px;
+    color: #00A699;
+}
+
+.listing-icon .fa-caret-down { 
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 195px;
+    font-size: 25px;
+    color: #00A699;
 }
