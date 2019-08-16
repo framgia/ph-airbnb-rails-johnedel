@@ -10,7 +10,7 @@
             <div class= "card-body">
                 <div class= "listing-icon">
                 <div class = "container">
-                    <%= form_for :room, url: ""  do |f| %>
+                    <%= form_for @room do |f| %>
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="action-content">
-                                    <%= link_to "Update", "#" , class: "btn btn-info" %>
+                                     <%= f.submit "Save", class: "btn btn-info text-white"%>
                                 </div>
                             </div>
                         </div>

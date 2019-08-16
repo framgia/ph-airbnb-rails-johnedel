@@ -9,7 +9,7 @@
             </div>
             <div class= "card-body">
                 <div class = "container">
-                    <%= form_for :room, url: ""  do |f| %>
+                    <%= form_for @room do |f| %>
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
@@ -35,12 +35,16 @@
                                 <div class="form-group">
                                     <%= f.check_box :is_air %> Air Conditioning
                                 </div>
+                            </div>
+                            <div class="col-4">
+                            </div>
+                            <div class="col-4">
+                                <div class="action-content">
+                                     <%= f.submit "Save", class:  "btn btn-info text-white"%>
+                                </div>
                             </div>                            
                         </div>
                     <% end %>
-                    <div class="action-content">
-                        <%= link_to "Save", "#" , class: "btn btn-info" %>
-                    </div>
                 </div>
             </div>
         </div>
