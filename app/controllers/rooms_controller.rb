@@ -19,18 +19,12 @@ class RoomsController < ApplicationController
 
   def update 
     @room = Room.find(params[:id])    
-    begin
-      if @room.update(room_params)
-        flash[:notice] = "Saved..."
-      else
-        flash[:alert] = "Something went wrong..."
-      end
-      redirect_to request.referrer
-    rescue
-      @room.update_attribute(:is_active, true)
-      flash[:notice] = "Successfully Published"
-      redirect_to request.referrer
+    if @room.update(room_params)
+      flash[:notice] = "Saved..."
+    else
+      flash[:alert] = "Something went wrong..."
     end
+    redirect_to request.referrer
   end
 
   def listing
