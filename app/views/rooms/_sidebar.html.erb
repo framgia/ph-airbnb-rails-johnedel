@@ -2,28 +2,41 @@
     <div class="card-body">
         <ul class="sidebar-list">
             <li class="sidebar-item">
-                <%= link_to "Listing", listing_room_path(1), class: "sidebar-link active" %>
+                <%= link_to "Listing", listing_room_path, class: "sidebar-link active" %>
+                <span class="float-right text-babu"><i class="fa fa-check"></i></span>
             </li>
             <li class="sidebar-item">
-                <%= link_to "Pricing", price_room_path(1), class: "sidebar-link active" %>
+                <%= link_to "Pricing", price_room_path, class: "sidebar-link active" %>
+                <% if @room.price %>
+                    <span class="float-right text-babu"><i class="fa fa-check"></i></span>
+                <% end%>
             </li>
             <li class="sidebar-item">
-                <%= link_to "Description", description_room_path(1), class: "sidebar-link active" %>
+                <%= link_to "Description", description_room_path, class: "sidebar-link active" %>
+                <% if @room.listing_name %>
+                    <span class="float-right text-babu"><i class="fa fa-check"></i></span>
+                <% end%>
             </li>
             <li class="sidebar-item">
-                <%= link_to "Photos", photos_room_path(1), class: "sidebar-link active" %>
+                <%= link_to "Photos", "#", class: "sidebar-link active" %>
             </li>
             <li class="sidebar-item">
-                <%= link_to "Amenities", amenities_room_path(1), class: "sidebar-link active" %>
-                <span class="pull-right text-babu">
+                <%= link_to "Amenities", amenities_room_path, class: "sidebar-link active" %>
+                <span class="float-right text-babu"><i class="fa fa-check"></i></span>
             </li>
             <li class="sidebar-item">
-                <%= link_to "Location", location_room_path(1), class: "sidebar-link active" %>
-                <span class="pull-right text-babu">
+                <%= link_to "Location", location_room_path, class: "sidebar-link active" %>
+                <span class="pull-right text-ba bu">
+                <% if @room.address %>
+                    <span class="float-right text-babu"><i class="fa fa-check"></i></span>
+                <% end%>
             </li>
         </ul><hr>
         <div class="action-sidebar">
-            <%= link_to "Publish", "#" , class: "btn btn-info" %>
+            <% complete_fields =  !@room.home_type.blank? && !@room.price.blank? && !@room.listing_name.blank? && !@room.address.blank? %>
+            <%= form_for @room do |f| %>  
+                <%= f.submit "Publish", class: "btn btn-info", disabled: !complete_fields %>
+            <% end %> 
         </div>
     </div>
 </div>

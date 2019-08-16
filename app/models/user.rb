@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable
 
   validates :fullname,  presence: true, length: { maximum: 50 }
+  has_many :rooms, dependent: :destroy
 
 
 

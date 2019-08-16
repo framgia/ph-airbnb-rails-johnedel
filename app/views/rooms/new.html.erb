@@ -6,11 +6,11 @@
             </div>
             <div class= "card-body">
                 <div class = "container">
-                    <%= form_for :room, url: ""  do |f| %>
+                    <%= form_for @room  do |f| %>
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <%= f.label :home_type %> <br>
+                                    <%= f.label :home_type %> 
                                     <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Bed & Breakfast", "Bed & Breakfast"]],
                                     id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
                                      
@@ -18,28 +18,28 @@
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <%= f.label :room_type %> <br>
+                                    <%= f.label :room_type %>
                                     <%= f.select :room_type, [["Entire", "Entire"], ["Private", "Private"], ["Shared", "Shared"]],
                                     id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <%= f.label :accommodate %> <br>
+                                    <%= f.label :accommodate %> 
                                     <%= f.select :accommodate, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]],
                                     id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <%= f.label :bedrooms %> <br>
+                                    <%= f.label :bedrooms %>
                                     <%= f.select :bedrooms, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]],
                                     id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                             </div>
                              <div class="col-4">
                                 <div class="form-group">
-                                    <%= f.label :bathrooms %> <br>
+                                    <%= f.label :bathrooms %>
                                     <%= f.select :bathrooms, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]],
                                     id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
@@ -48,8 +48,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="action-room">
-                                    <!-- <%= f.submit "Create My Room", class: "btn btn-info" %> --> 
-                                    <%= link_to "Create My Room", listing_room_path(1) , class: "btn btn-info" %>
+                                    <%= f.submit "Create My Room", class: "btn btn-info" %>
                                 </div>
                             </div>
                         </div>

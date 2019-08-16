@@ -9,15 +9,15 @@
             </div>
            <div class= "card-body">
                 <div class = "container">
-                    <%= form_for :room, url: ""  do |f| %>
+                    <%= form_for @room do |f| %>
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <%= f.label :price %> <br>
-                                    <%= f.text_field :price %> 
-                                    <div class="action-content mt-4">
-                                        <%= link_to "Save", "#" , class: "btn btn-info" %>
-                                    </div>
+                                    <%= f.text_field :price, placeholder: "eg: $100", required: true %>        
+                                </div>
+                                <div class="action-content mt-4">
+                                    <%= f.submit "Save", class:  "btn btn-info text-white"%>
                                 </div>
                             </div>
                         </div>
