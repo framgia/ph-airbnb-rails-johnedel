@@ -1,0 +1,51 @@
+<div class = "row"> 
+    <div class ="col-3">
+        <div class ="card mt-4">
+            <div class ="card-body">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <%= link_to "Your Listings", rooms_path, class: "sidebar-link active" %>
+                    </li>
+                    <li class="sidebar-item">
+                        <%= link_to "Your Reservations", "#", class: "sidebar-link active" %>
+                    </li>
+                    <li class="sidebar-item">
+                        <%= link_to "Your Trips", "#", class: "sidebar-link active" %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class = "col-9">
+        <div class = "card mt-4">
+            <div class = "card-header text-white">
+                Your Listings 
+            </div>    
+
+            <div class="card-body">
+                <div class = "container ">
+                    <div class = "row">
+                        <% @rooms.each do |room| %>
+                            <div class="col-3 mt-3">
+                                <% unless room.photos.blank? %>
+                                    <%= image_tag room.photos.first.image.url(:thumb), class: "img-thumbnail" %>
+                                <% else %>
+                                     <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
+                                <% end %>
+                            </div>
+
+                            <div class="col-6 mt-3">
+                                <h5><%= room.listing_name %></h5>
+                            </div>
+
+                            <div class="col-3 mt-3">
+                                <%= link_to 'Update', listing_room_path(room), class: "btn btn-info" %>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
