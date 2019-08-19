@@ -71,4 +71,14 @@ Rails.application.configure do
     password: Rails.application.credentials.mailgun[:password]
   }
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_host_name => 's3-ap-northeast-1.amazonaws.com',
+    :s3_credentials => {
+      :access_key_id => Rails.application.credentials.aws[:access_key_id],
+      :secret_access_key => Rails.application.credentials.aws[:secret_access_key],
+      :s3_region => 'ap-northeast-1'
+    },
+    :bucket => 'johnedel-airbnb'
+  }
 end

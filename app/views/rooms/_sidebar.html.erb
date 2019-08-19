@@ -18,7 +18,10 @@
                 <% end%>
             </li>
             <li class="sidebar-item">
-                <%= link_to "Photos", "#", class: "sidebar-link active" %>
+                <%= link_to "Photos", photos_room_path , class: "sidebar-link active" %>
+                <% unless @room.photos.blank? %>
+                    <span class="float-right"><i class="fa fa-check"></i></span>
+                <% end %>
             </li>
             <li class="sidebar-item">
                 <%= link_to "Amenities", amenities_room_path, class: "sidebar-link active" %>
@@ -32,8 +35,11 @@
                 <% end%>
             </li>
         </ul><hr>
-        <div class="action-sidebar">     
-            <%= link_to "Publish", "#", class: "btn btn-info" %>
+         <div class="action-sidebar">
+            <% complete_fields =  !@room.home_type.blank? && !@room.price.blank? && !@room.listing_name.blank? && !@room.address.blank? && !@room.photos.blank? && @room.is_active.blank? %>
+            <%= form_for @room do |f| %>     
+                <%= f.submit "Publish", class: "btn btn-info", disabled: !complete_fields %>
+            <% end %> 
         </div>
     </div>
 </div>
