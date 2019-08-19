@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-
+gem 'aws-sdk'
+gem "paperclip", "~> 6.0.0"
 gem 'web-console', '>= 3.3.0'
 gem 'listen', '>= 3.0.5', '< 3.2'
 gem "font-awesome-rails"
