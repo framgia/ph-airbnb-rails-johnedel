@@ -13,9 +13,12 @@
                         <div class = "col-12 photo-upload text-center">
                             <%= form_for @photo, html: { class: "form-horizontal", multipart: true } do |f| %>
                             <%= f.hidden_field :room_id, value: @room.id %>
-                                <div class="colcontrol-group ml-5">
+                                <div class="colcontrol-group">
                                     <div class="controls">
+                                    <span class="btn btn-large btn-info btn-file">
+                                    Select photos
                                     <%= file_field_tag "images[]", type: :file, multiple: true, accept: 'image/jpeg,image/gif,image/png' %>
+                                    </span>
                                     </div>
                                 </div>
                                 <div class="action-content mt-4">
