@@ -26,12 +26,12 @@
             <div class="card-body">
                 <div class = "container ">
                     <div class = "row">
-                        <% @rooms.each do |room| %>
+                        <% current_user.rooms.each do |room| %>
                             <div class="col-3 mt-3">
                                 <% unless room.photos.blank? %>
                                     <%= image_tag room.photos.first.image.url(:thumb), class: "img-thumbnail" %>
                                 <% else %>
-                                     <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
+                                    <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
                                 <% end %>
                             </div>
 
