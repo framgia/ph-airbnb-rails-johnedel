@@ -17,27 +17,27 @@
                     <%= image_tag gravatar_for(@room.user), class: "avatar-room-scale" %>
                 <% end %>
                 <div class="user-name mt-2">
-                    <h6><%= @room.user.fullname %></h6>
+                    <h6><%= @room.user.fullname%></h6>
                 </div>
             </div>
         </div>
         <hr>
 
-        <div class="row">            
+        <div class="row text-center">            
             <div class="col-3">
-                <i class="fa fa-home fa-2x"></i>
+                <i class="fa fa-home fa-2x"></i> <br>
                 <%= @room.home_type %>
             </div>
             <div class="col-3">
-             <i class="fa fa-user fa-2x"></i> 
+             <i class="fa fa-user fa-2x"></i><br>
                 <%= "#{@room.accommodate} Guests" %>
             </div>
             <div class="col-3">
-             <i class="fa fa-bed fa-2x"></i>
+             <i class="fa fa-bed fa-2x"></i> <br>
                 <%= "#{@room.bedrooms} Bedrooms" %>
             </div>
             <div class="col-3">
-            <i class="fa fa-bath fa-2x"></i>
+            <i class="fa fa-bath fa-2x"></i> <br>
                 <%= "#{@room.bathrooms} Bathrooms" %>
             </div>
         </div>
@@ -102,10 +102,11 @@
                 <div class="carousel-inner">
                     <% @photos.each.with_index do |photo, index| %>
                         <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-                            <%= image_tag photo.image.url(), class: "d-block w-100" %>
+                            <%= image_tag photo.image.url(), class: "carousel-img-size" %>
                         </div>
                     <% end %>
-                </div>  
+                </div> 
+                 
 
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
