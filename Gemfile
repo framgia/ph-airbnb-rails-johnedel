@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'geocoder', '~> 1.4'
 gem 'aws-sdk'
 gem "paperclip", "~> 6.0.0"
 gem 'web-console', '>= 3.3.0'

@@ -4,31 +4,30 @@
     <title>Airbnb</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key %>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
+    
+    <% unless flash.empty? %>
+      <script type="text/javascript">
+        <% flash.each do |type, message| %>
+          <% type = 'success' if type == 'notice' %>
+          <% type = 'error'   if type == 'alert'  %>
+          toastr['<%= type %>']('<%= message %>')
+        <% end %>
+      </script>
+    <% end %>
 
-  <%= render 'layouts/header' %>
-
-  <% unless flash.empty? %>
-    <script type="text/javascript">
-      <% flash.each do |type, message| %>
-        <% type = 'success' if type == 'notice' %>
-        <% type = 'error'   if type == 'alert'  %>
-        toastr['<%= type %>']('<%= message %>')
-      <% end %>
-    </script>
-  <% end %>
-
-  <div class="container">
-    <%= yield %>
-  </div>
-  <%= debug(params) if Rails.env.development? %>
-  <div class= "fixed-bottom">
-    <%= render 'layouts/footer'%>
-  </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= debug(params) if Rails.env.development? %>
+    <div class= "fixed-bottom">
+      <%= render 'layouts/footer'%>
+    </div>
   </body>
 </html>

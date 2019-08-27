@@ -6,4 +6,6 @@ class Room < ApplicationRecord
   validates :accommodate, presence: true, length: { maximum: 50 }
   validates :bedrooms, presence: true, length: { maximum: 50 }
   validates :bathrooms, presence: true, length: { maximum: 50 }
+  geocoded_by :address
+  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 end

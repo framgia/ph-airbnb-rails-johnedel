@@ -1,12 +1,17 @@
 class RoomsController < ApplicationController
 
   before_action :authenticate_user!
-
+  
   def index
   end
 
   def new
     @room = current_user.rooms.build
+  end
+
+  def show
+    @room = Room.find(params[:id])
+    @photos = @room.photos
   end
 
   def create
