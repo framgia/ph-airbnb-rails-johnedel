@@ -10,14 +10,14 @@
                 <h6> <%= @room.address %> </h6>    
             </div>
             
-            <div class="col-4">
-                <% if current_user.image? %>
-                    <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large", class: "avatar-room-scale" %>
+            <div class="col-4 text-center">
+                <% if @room.user.image? %>
+                    <%= image_tag "http://graph.facebook.com/#{@room.user.uid}/picture?type=large", class: "avatar-room-scale" %>
                 <% else %>
-                    <%= image_tag gravatar_for(@user), class: "avatar-room-scale" %>
+                    <%= image_tag gravatar_for(@room.user), class: "avatar-room-scale" %>
                 <% end %>
-                <div class="user-name text-center mt-2">
-                    <h6><%= current_user.fullname%></h6>
+                <div class="user-name mt-2">
+                    <h6><%= @room.user.fullname %></h6>
                 </div>
             </div>
         </div>
@@ -146,7 +146,6 @@
                 <span class="pull-right">Per Night</span>
             </div>
             <div class="card-body">
-            <p>Coordinates: <%= @room.latitude %> <%= @room.longitude %></p>
             </div>
         </div>
     </div>

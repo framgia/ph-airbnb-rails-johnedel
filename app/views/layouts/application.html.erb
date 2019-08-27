@@ -4,14 +4,9 @@
     <title>Airbnb</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!--<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='"AIzaSyB4ThgCH2uYirIjhltamXHOP8EwIu20M0w" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>-->
-
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -35,13 +30,12 @@
   <div class= "fixed-bottom">
     <%= render 'layouts/footer'%>
   </div>
-          <script type="text/javascript">
-        $(document).on('turbolinks:load', function(){
-            $('.carousel').carousel({
-                interval: 2000
-            });
-        });
-        </script>
+    <script type="text/javascript">
+      $(document).on('turbolinks:load', function(){
+          $('.carousel').carousel({
+              interval: 2000
+          });
+      });
+    </script>
   </body>
-
 </html>
