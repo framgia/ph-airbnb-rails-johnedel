@@ -10,32 +10,24 @@
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
+    
+    <% unless flash.empty? %>
+      <script type="text/javascript">
+        <% flash.each do |type, message| %>
+          <% type = 'success' if type == 'notice' %>
+          <% type = 'error'   if type == 'alert'  %>
+          toastr['<%= type %>']('<%= message %>')
+        <% end %>
+      </script>
+    <% end %>
 
-  <%= render 'layouts/header' %>
-
-  <% unless flash.empty? %>
-    <script type="text/javascript">
-      <% flash.each do |type, message| %>
-        <% type = 'success' if type == 'notice' %>
-        <% type = 'error'   if type == 'alert'  %>
-        toastr['<%= type %>']('<%= message %>')
-      <% end %>
-    </script>
-  <% end %>
-
-  <div class="container">
-    <%= yield %>
-  </div>
-  <%= debug(params) if Rails.env.development? %>
-  <div class= "fixed-bottom">
-    <%= render 'layouts/footer'%>
-  </div>
-    <script type="text/javascript">
-      $(document).on('turbolinks:load', function(){
-          $('.carousel').carousel({
-              interval: 2000
-          });
-      });
-    </script>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= debug(params) if Rails.env.development? %>
+    <div class= "fixed-bottom">
+      <%= render 'layouts/footer'%>
+    </div>
   </body>
 </html>

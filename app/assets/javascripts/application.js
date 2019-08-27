@@ -18,3 +18,9 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr
+
+$(document).on('turbolinks:load', function(){
+    $('.carousel').carousel({
+        interval: 2000
+    });
+});
