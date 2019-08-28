@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @photos = @room.photos
+    @reservation = Reservation.new
   end
 
   def create

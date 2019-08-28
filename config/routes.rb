@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get 'amenities'
       get 'location'
     end
+    resources :reservations, only: [:create]
   end
   resources :photos
-  
 end
