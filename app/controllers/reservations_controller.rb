@@ -15,6 +15,14 @@ class ReservationsController < ApplicationController
     redirect_to @room 
   end
 
+  def your_trips
+  
+  end
+
+  def your_reservations
+  
+  end
+
   private
     def reservation_params
       params.require(:reservation).permit(:start_date, :end_date, :room_id)
