@@ -15,12 +15,17 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery3
+//= require jquery-ui
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr
+//= require jquery-ui/core
+//= require jquery-ui/widget
+//= require jquery-ui/position
 
 $(document).on('turbolinks:load', function(){
     $('.carousel').carousel({
         interval: 2000
     });
 });
+
