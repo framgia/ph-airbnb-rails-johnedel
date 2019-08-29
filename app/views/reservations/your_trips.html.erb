@@ -14,8 +14,7 @@
                     <div class = "row">
                         <% current_user.reservations.each do |trip| %>
                             <div class="col-2 mt-3 text-muted">
-                                <% datetime = trip.start_date.to_s %>
-                                <h6><%= my_date = DateTime.parse(datetime).strftime("%d/%m/%Y") %></h6>
+                                <h6><%= trip.start_date.strftime("%v") %></h6>
                             </div>
 
                             <div class="col-2 mt-3">
