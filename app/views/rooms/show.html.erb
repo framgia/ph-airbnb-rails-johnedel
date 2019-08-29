@@ -149,7 +149,6 @@
             <div class="card-body">
             <!--<p>Coordinates: <%= @room.latitude %> <%= @room.longitude %></p>-->
              <%= form_for([@room, @reservation]) do |f| %>
-
                 <div class="row">
                     <div class="col-6">
                         <label>Check In</label>
@@ -158,34 +157,32 @@
                     <div class="col-6">
                         <label>Check Out</label>
                         <%= f.text_field :end_date, placeholder: "End Date", class: "form-control", disabled: true %>
-                    </div>
-                    </div class="col-12">
-                    <%= f.submit "Book Now", id: "button_book", class: "btn btn-primary mt-3 w-100", disabled: true %>
+                    </div>        
                 </div>
-                    <%= f.hidden_field :room_id, value: @room.id %>
-                    <%= f.hidden_field :price, value: @room.price %>
-                    <%= f.hidden_field :total, id: 'reservation_total' %>
-            <% end %>
-            <div id="total_tab" style="display: none">
-                <div class="container text-center">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Price</td>
-                                <td><h6>$<%= @room.price %> </h6></td>
-                            </tr>
-                            <tr>
-                                <td>Nights</td>
-                                <td><h6 id="total_nights"></h6></td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td><h6 id="total_amount"></h6></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <%= f.hidden_field :room_id, value: @room.id %>
+            
+                <div id="total_tab" style="display: none">
+                    <div class="container">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Price</td>
+                                    <td class="text-right">$<span><%= @room.price %></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Night(s)</td>
+                                    <td class="text-right">x<span id="total_nights"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="total">Total</td>
+                                    <td class="text-right">$<span id="total_amount"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <%= f.submit "Book Now", id: "button_book", class: "btn btn-primary mt-3 w-100 mb-3", disabled: true %> 
+                    </div>    
+                    <% end %>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -228,10 +225,6 @@ function initMap() {
             var end_date = $('#reservation_end_date').datepicker('getDate');
             var nights = Math.abs(start_date - end_date)/1000/60/60/24;
             var total = nights * <%= @room.price %>;
-            console.log(start_date);
-            console.log(end_date);   
-            console.log(nights);
-            console.log(total);
 
             $.ajax({
               url: '',
@@ -270,10 +263,6 @@ function initMap() {
         var nights = Math.abs(start_date - end_date)/1000/60/60/24 + 1;
         var total = nights * <%= @room.price %>;
      
-            console.log(start_date);
-            console.log(end_date);   
-            console.log(nights);
-            console.log(total);
 
             $.ajax({
               url: '',
@@ -300,6 +289,5 @@ function initMap() {
             });
         }
     });
-
   });
 </script>
