@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @photos = @room.photos
     @reservation = Reservation.new
+    @reviews = @room.reviews.where.not(host_id: current_user)
   end
 
   def create

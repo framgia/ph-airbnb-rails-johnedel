@@ -23,13 +23,118 @@
 
     <div class="mt-4 col-9">
         <h2><%= @user.fullname%> </h2>
-        <h4 class="mt-4">Listings (0)</h4>
-        <h4 class="text-center">There are no listings.</h4>
+        <h4 class="mt-4">Listings (<%= @rooms.count%>)</h4>
+        <% if @rooms.count == 0 %>
+            <div class="text-center">
+                <h4>There are no listings.</h4>
+            </div>
+        <% else %>
+            <div class= "row">
+                <% @rooms.each do |room| %>
+                        <div class= "col-4 mt-4">
+                            <div class="card h-100">
+                                <%= image_tag room.photos.first.image.url, class: "card-img-top"%>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= link_to room.listing_name, room_path(room) %></h5>
+                                    <p class="card-text">$<%= room.price %> - <%= room.home_type %> - <%= room.bedrooms %> beds</p>
+                                    <div id="star-ratings_<%= room.id %>"></div>
+                                    <div> <%= pluralize(room.reviews.count, "review") %> </div>
+                                    <% if room.reviews.count == 0%>
+                                        <% average_value = 0 %>
+                                    <% else%>
+                                        <% average_value = room.reviews.average(:star) %>
+                                    <% end%>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            $('#star-ratings_<%= room.id %>').raty({
+                                path: '/assets',
+                                readOnly: true,
+                                score: <%= average_value %>
+                            });
+                        </script>
+                <% end %>
+            </div>
+        <% end %>
 
-        <h4 class="mt-4">Reviews From Guests (0)</h4>
-        <h4 class="text-center">There are no reviews.</h4>
+        <h4 class="mt-4">Reviews From Guests (<%= @guests.count %>)</h4>
+        <% if @guests.count == 0 %>
+            <div class="text-center">
+                <h4>There are no reviews.</h4>
+            </div>
+        <% else %>
+            <% @guests.each do |g| %>
+                <hr/>
+                <div class = "row">
+                    <div class="col-3">
+                        <% if g.guest.image %>
+                            <%= image_tag g.guest.image, class: "rounded-circle", style: 'height:50px;width:auto;' %>
+                        <% else %>
+                            <%= image_tag gravatar_for(g.guest), class: "rounded-circle", style: 'height:50px;width:auto;' %>
+                        <% end %>
+                        <strong><%= g.guest.fullname %></strong>
+                    </div>
 
-        <h4 class="mt-4">Reviews From Hosts (0)</h4>
-        <h4 class="text-center">There are no reviews.</h4>
+                     <div class="col-9">
+                        <div class ="star_rating_<%= g.id %>" data-score="<%= g.star %>"></div>
+                        <div><%= g.created_at.strftime("%v") %></div>
+                        <div><%= g.comment %></div>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('.star_rating_<%= g.id %>').raty({
+                            score: function() {
+                            return $(this).attr('data-score');
+                        },
+                        readOnly: true,
+                        
+                        path: '/assets/'
+                        });
+                    });
+                </script>
+            <% end %>
+        <% end %>
+
+        <h4 class="mt-4">Reviews From Hosts  (<%= @hosts.count %>)</h4>
+        <% if @hosts.count == 0 %>
+            <div class="text-center">
+                <h4>There are no reviews.</h4>
+            </div>
+        <% else %>
+            <% @hosts.each do |h| %>
+                <hr/>
+                <div class = "row">
+                    <div class="col-3">
+                        <% if h.guest.image %>
+                            <%= image_tag h.guest.image, class: "rounded-circle", style: 'height:50px;width:auto;' %>
+                        <% else %>
+                            <%= image_tag gravatar_for(h.guest), class: "rounded-circle", style: 'height:50px;width:auto;' %>
+                        <% end %>
+                        <strong><%= h.guest.fullname %></strong>
+                    </div>
+
+                     <div class="col-9">
+                        <div class ="star_rating_<%= h.id %>" data-score="<%= h.star %>"></div>
+                        <div><%= h.created_at.strftime("%v") %></div>
+                        <div><%= h.comment %></div>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('.star_rating_<%= h.id %>').raty({
+                            score: function() {
+                            return $(this).attr('data-score');
+                        },
+                        readOnly: true,
+                        
+                        path: '/assets/'
+                        });
+                    });
+                </script>
+            <% end %>
+        <% end %>
+
     </div>
 </div>
