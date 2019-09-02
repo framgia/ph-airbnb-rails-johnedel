@@ -20,9 +20,13 @@
 
                                  <div class="col-2 mt-3">
                                     <% unless reservation.room.photos.blank? %>
-                                        <%= image_tag reservation.room.photos.first.image.url(:thumb), class: "img-thumbnail" %>
+                                        <%= link_to room_path(reservation.room) do %>
+                                              <%= image_tag reservation.room.photos.first.image.url(:thumb), class: "img-thumbnail" %>
+                                        <% end %>
                                     <% else %>
-                                        <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
+                                        <%= link_to room_path(reservation.room) do %>
+                                            <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
+                                        <% end %>
                                     <% end %>
                                 </div>
 
@@ -33,7 +37,7 @@
                                     <% else %>
                                         <%= image_tag gravatar_for(reservation.user), class: "rounded-circle", style: 'height:40px;width:auto;' %>
                                     <% end%>
-                                    <span><%= reservation.user.fullname %></span>
+                                    <span><%= link_to reservation.user.fullname, reservation.user %></span>
                                 </div>
 
                                  <div class="col-3 mt-3 text-right">

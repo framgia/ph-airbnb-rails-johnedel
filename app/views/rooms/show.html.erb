@@ -127,6 +127,12 @@
                         <h4>There are no reviews.</h4>
                     </div>
                <% else %>
+                    <h3><%= pluralize(@reviews.count, "Review")%><span id="average_rating"></span></h3>    
+                    <% if @reviews == 0 %>
+                        <% average_value = 0 %>
+                    <% else%>
+                        <% average_value = @reviews.average(:star) %>
+                    <% end%>
                     <% @reviews.each do |review| %>
                         <hr/>
                         <div class = "row">
@@ -145,6 +151,14 @@
                                 <div><%= review.comment %></div>
                             </div>
                         </div>
+                        <script>
+                            console.log(<%= average_value %>);
+                            $('#average_rating').raty({
+                                path: '/assets',
+                                readOnly: true,
+                                score: <%= average_value %>
+                            });
+                        </script>
                         <script>
                             $(document).ready(function() {
                                 $('.star_rating_<%= review.id %>').raty({
