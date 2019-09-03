@@ -142,7 +142,7 @@
                                 <% else %>
                                     <%= image_tag gravatar_for(review.guest), class: "rounded-circle", style: 'height:50px;width:auto;' %>
                                 <% end %>
-                                <strong><%= review.guest.fullname %></strong>
+                                <strong><%= link_to review.guest.fullname, review.guest %></strong>
                             </div>
 
                              <div class="col-6">

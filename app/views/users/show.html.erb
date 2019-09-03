@@ -73,7 +73,7 @@
                         <% else %>
                             <%= image_tag gravatar_for(g.guest), class: "rounded-circle", style: 'height:50px;width:auto;' %>
                         <% end %>
-                        <strong><%= g.guest.fullname %></strong>
+                        <strong><%= link_to g.guest.fullname, g.guest %></strong>
                     </div>
 
                      <div class="col-9">
@@ -117,7 +117,7 @@
                         <% else %>
                             <%= image_tag gravatar_for(h.host), class: "rounded-circle", style: 'height:50px;width:auto;' %>
                         <% end %>
-                        <strong><%= h.host.fullname %></strong>
+                        <strong><%= link_to h.host.fullname, h.host %></strong>
                     </div>
 
                      <div class="col-9">
