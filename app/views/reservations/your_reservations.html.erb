@@ -57,9 +57,10 @@
                                         <div class="modal-body">
                                             <%= form_for current_user.passive_relationships.new do |f| %>
 
-                                                 <%= f.hidden_field :room_id, value: reservation.room.id %>
+                                                <%= f.hidden_field :room_id, value: reservation.room.id %>
                                                 <%= f.hidden_field :reservation_id, value: reservation.id %>
                                                 <%= f.hidden_field :guest_id, value: reservation.user.id %>
+                                                <%= f.hidden_field :review_type, value: 0 %>
 
 
                                                  <div class="center form-group">

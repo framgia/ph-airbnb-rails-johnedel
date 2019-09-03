@@ -46,7 +46,7 @@
                                     <% end%>
                                 </div>
                             </div>
-                        </div>
+                        </div>  
                         <script>
                             $('#star-ratings_<%= room.id %>').raty({
                                 path: '/assets',
@@ -78,6 +78,11 @@
 
                      <div class="col-9">
                         <div class ="star_rating_<%= g.id %>" data-score="<%= g.star %>"></div>
+                        <% if current_user == g.guest %>
+                            <span class="pull-right">
+                            <%= link_to g, method: :delete, data: {confirm: "Are you sure?"} do %> <i class="fa fa-trash"></i><% end %>
+                            </span>
+                        <% end %>
                         <div><%= g.created_at.strftime("%v") %></div>
                         <div><%= g.comment %></div>
                     </div>
@@ -107,16 +112,21 @@
                 <hr/>
                 <div class = "row">
                     <div class="col-3">
-                        <% if h.guest.image %>
-                            <%= image_tag h.guest.image, class: "rounded-circle", style: 'height:50px;width:auto;' %>
+                        <% if h.host.image %>
+                            <%= image_tag h.host.image, class: "rounded-circle", style: 'height:50px;width:auto;' %>
                         <% else %>
-                            <%= image_tag gravatar_for(h.guest), class: "rounded-circle", style: 'height:50px;width:auto;' %>
+                            <%= image_tag gravatar_for(h.host), class: "rounded-circle", style: 'height:50px;width:auto;' %>
                         <% end %>
-                        <strong><%= h.guest.fullname %></strong>
+                        <strong><%= h.host.fullname %></strong>
                     </div>
 
                      <div class="col-9">
                         <div class ="star_rating_<%= h.id %>" data-score="<%= h.star %>"></div>
+                        <% if current_user == h.host %>
+                            <span class="pull-right">
+                            <%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %> <i class="fa fa-trash"></i><% end %>
+                            </span>
+                        <% end %>
                         <div><%= h.created_at.strftime("%v") %></div>
                         <div><%= h.comment %></div>
                     </div>

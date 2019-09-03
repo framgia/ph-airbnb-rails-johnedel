@@ -60,6 +60,7 @@
                                     <%= f.hidden_field :room_id, value: trip.room.id %>
                                     <%= f.hidden_field :reservation_id, value: trip.id %>
                                     <%= f.hidden_field :host_id, value: trip.room.user.id %>
+                                    <%= f.hidden_field :review_type, value: 1 %>
 
                                          <div class="center form-group">
                                             <div id="star-ratings_<%= trip.id %>"></div>

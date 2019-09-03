@@ -79,7 +79,7 @@
                 <% unless @room.is_heating %>
                     <div class = "line-throught", style = "text-decoration: line-through;" > Heating </div>
                 <% else %>
-                    <div class = "line-throught", style = "text-decoration: none;" > Heating </div>
+                    <div class = "line-throught",    > Heating </div>
                 <% end %>
 
                 <% unless @room.is_air %>
@@ -147,6 +147,11 @@
 
                              <div class="col-6">
                                 <div class ="star_rating_<%= review.id %>" data-score="<%= review.star %>"></div>
+                                 <% if current_user == review.guest %>
+                                    <span class="pull-right">
+                                    <%= link_to review, method: :delete, data: {confirm: "Are you sure?"} do %> <i class="fa fa-trash"></i><% end %>
+                                    </span>
+                                <% end %>
                                 <div><%= review.created_at.strftime("%v") %></div>
                                 <div><%= review.comment %></div>
                             </div>

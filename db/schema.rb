@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_08_31_173756) do
     t.text "comment"
     t.bigint "reservation_id"
     t.bigint "room_id"
+    t.boolean "review_type"
     t.integer "guest_id"
     t.integer "host_id"
     t.datetime "created_at", null: false

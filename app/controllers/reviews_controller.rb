@@ -11,8 +11,15 @@ class ReviewsController < ApplicationController
     redirect_to request.referrer
   end
 
+  def destroy
+    @review = Review.find(params[:id]).destroy
+    redirect_to request.referrer
+    flash[:success] = "Removed..."
+  end
+
+
    private
     def review_params
-      params.require(:review).permit(:comment, :star, :room_id, :reservation_id, :host_id, :guest_id)
+      params.require(:review).permit(:comment, :star, :room_id, :reservation_id, :host_id, :guest_id, :review_type)
     end
 end
