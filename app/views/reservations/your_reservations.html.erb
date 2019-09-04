@@ -3,13 +3,13 @@
         <%= render 'rooms/listing_sidebar'%>
     </div>
 
-    <div class = "col-9">
+     <div class = "col-9">
         <div class = "card mt-4">
             <div class = "card-header text-white">
                 Your Reservations
             </div>    
 
-            <div class="card-body">
+             <div class="card-body">
                 <div class = "container ">
                     <div class = "row">
                         <% current_user.rooms.each do |room| %>
@@ -18,26 +18,74 @@
                                     <h6><%= reservation.start_date.strftime("%v") %></h6>
                                 </div>
 
-                                <div class="col-2 mt-3">
+                                 <div class="col-2 mt-3">
                                     <% unless reservation.room.photos.blank? %>
-                                        <%= image_tag reservation.room.photos.first.image.url(:thumb), class: "img-thumbnail" %>
+                                        <%= link_to room_path(reservation.room) do %>
+                                              <%= image_tag reservation.room.photos.first.image.url(:thumb), class: "img-thumbnail" %>
+                                        <% end %>
                                     <% else %>
-                                        <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
+                                        <%= link_to room_path(reservation.room) do %>
+                                            <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
+                                        <% end %>
                                     <% end %>
                                 </div>
 
-                                <div class="col-5 mt-3">
+                                 <div class="col-5 mt-3">
                                     <h6><%= room.listing_name %></h6>
                                     <% if reservation.user.image? %>
                                         <%= image_tag reservation.user.image, class: "rounded-circle", style: 'height:40px;width:auto;'%>
                                     <% else %>
                                         <%= image_tag gravatar_for(reservation.user), class: "rounded-circle", style: 'height:40px;width:auto;' %>
                                     <% end%>
-                                    <span><%= reservation.user.fullname %></span>
+                                    <span><%= link_to reservation.user.fullname, reservation.user %></span>
                                 </div>
 
-                                <div class="col-3 mt-3 text-right">
-                                    <%= link_to 'Review Host', "#", class: "btn btn-info" %>
+                                 <div class="col-3 mt-3 text-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target='<%= "#trigger#{reservation.id}" %>'>
+                                        Review Guest
+                                    </button>
+                                </div>
+                                <div class="modal fade" id='<%= "trigger#{reservation.id}" %>' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Review Guest</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <%= form_for current_user.passive_relationships.new do |f| %>
+
+                                                <%= f.hidden_field :room_id, value: reservation.room.id %>
+                                                <%= f.hidden_field :reservation_id, value: reservation.id %>
+                                                <%= f.hidden_field :guest_id, value: reservation.user.id %>
+                                                <%= f.hidden_field :review_type, value: 0 %>
+
+
+                                                 <div class="star-center"> 
+                                                   <div id="star-ratings_<%= reservation.id %>"></div> <br>
+                                                </div> 
+
+                                                 <script>
+                                           
+                                                    $('#star-ratings_<%= reservation.id %>').raty({
+                                                        path: '/assets',
+                                                        scoreName: 'review[star]'
+                                                    });
+                                               
+                                                </script>
+
+                                                 <div class="form-group">
+                                                    <%= f.text_area :comment, rows: 4, class: "form-control", placeholder: "Comments" %>
+                                                </div>                                        
+                                        </div>
+                                        <div class="modal-footer">
+                                            <%= f.submit "Add Review", class: "btn btn-primary" %>
+                                        </div>
+                                            <% end %>
+                                        </div>
+                                    </div>
                                 </div>
                             <% end %>
                         <% end%>

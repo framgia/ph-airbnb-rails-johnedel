@@ -79,7 +79,7 @@
                 <% unless @room.is_heating %>
                     <div class = "line-throught", style = "text-decoration: line-through;" > Heating </div>
                 <% else %>
-                    <div class = "line-throught", style = "text-decoration: none;" > Heating </div>
+                    <div class = "line-throught",    > Heating </div>
                 <% end %>
 
                 <% unless @room.is_air %>
@@ -120,17 +120,68 @@
         </div>
         <hr>
 
-         <div class="row">
-            <div class="col-md-12">
-                <h3> 0 Reviews <span id="average_rating"></span></h3>
-                <div class="container">
-                     <div class="text-center">
-                         <h4>There are no reviews.</h4>
+          <div class="row">
+            <div class="col-md-12">                
+                <% if @reviews.count == 0 %>
+                    <div class="text-center">
+                        <h4>There are no reviews.</h4>
                     </div>
-                </div>
-            </div>
-        </div>
-        <hr>
+               <% else %>
+                    <h3><%= pluralize(@reviews.count, "Review")%><span id="average_rating"></span></h3>    
+                    <% if @reviews == 0 %>
+                        <% average_value = 0 %>
+                    <% else%>
+                        <% average_value = @reviews.average(:star) %>
+                    <% end%>
+                    <% @reviews.each do |review| %>
+                        <hr/>
+                        <div class = "row">
+                            <div class="col-4">
+                                <% if review.guest.image %>
+                                    <%= image_tag review.guest.image, class: "rounded-circle", style: 'height:50px;width:auto;' %>
+                                <% else %>
+                                    <%= image_tag gravatar_for(review.guest), class: "rounded-circle", style: 'height:50px;width:auto;' %>
+                                <% end %>
+                                <strong><%= link_to review.guest.fullname, review.guest %></strong>
+                            </div>
+
+                             <div class="col-6">
+                                <div class ="star_rating_<%= review.id %>" data-score="<%= review.star %>"></div>
+                                 <% if current_user == review.guest %>
+                                    <span class="pull-right">
+                                    <%= link_to review, method: :delete, data: {confirm: "Are you sure?"} do %> <i class="fa fa-trash"></i><% end %>
+                                    </span>
+                                <% end %>
+                                <div><%= review.created_at.strftime("%v") %></div>
+                                <div><%= review.comment %></div>
+                            </div>
+                        </div>
+                        <script>
+                            console.log(<%= average_value %>);
+                            $('#average_rating').raty({
+                                path: '/assets',
+                                readOnly: true,
+                                score: <%= average_value %>
+                            });
+                        </script>
+                        <script>
+                            $(document).ready(function() {
+                                $('.star_rating_<%= review.id %>').raty({
+                                    score: function() {
+                                    return $(this).attr('data-score');
+                                },
+                                readOnly: true,
+                                
+                                path: '/assets/'
+                                });
+                            });
+                        </script>
+                    <% end %>
+                <% end %>
+            </div>	           
+        </div>	
+        <hr>	        
+
 
         <div class="row">            
             <div class="col-12">
