@@ -3,12 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'ransack'
 gem 'jquery-ui-rails'
 gem 'geocoder', '~> 1.4'
 gem 'aws-sdk'
 gem "paperclip", "~> 6.0.0"
-gem 'web-console', '>= 3.3.0'
-gem 'listen', '>= 3.0.5', '< 3.2'
 gem "font-awesome-rails"
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -72,4 +71,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

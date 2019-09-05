@@ -1,9 +1,10 @@
 @import "bootstrap";
 @import "toastr";
 @import "font-awesome";
-/*
- *= require jquery.ui.datepicker
- */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+} 
 
 .form-group {
     margin-bottom: 30px;
@@ -217,3 +218,47 @@
 .star-center {
     margin-left: 180px;
 } 
+
+.masthead {
+    height: 100vh;
+    min-height: 650px;
+    background-image:url('header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  [data-toggle="collapse"] .fa:before {  
+    content: "\f139";
+  }
+  
+  [data-toggle="collapse"].collapsed .fa:before {
+    content: "\f13a";
+  }
+  
+
+  #map1 {
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 27%;
+  }  
+
+
+  #drop {
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 200px;
+    font-size: 25px;
+    color: #00A699;
+  }
+
+  .navbar {
+    padding: 15px;
+  }
+
+  .navbar a{
+    font-weight: bold;
+    }
