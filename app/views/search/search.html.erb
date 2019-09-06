@@ -1,109 +1,105 @@
 <div class="row">
-
-<div class="col-8">
-
-    <div class= "col-4 offset-5 mt-4">
-        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">More Filters
-        <i class="fa" aria-hidden="true"></i> </button>
-    </div>
-
-    <div class= "filters collapse" id="demo" >
-        <%= search_form_for @search, url: search_path, remote: true do |f| %>
-      <%= f.hidden_field :address_cont, value: @address %>
-        <div class="row mt-4">
-            <div class="col-md-8">
-                <label>Price range:</label>
-                <div id="slider"></div>
-            </div>
-            <div class="col-md-2">
-                <label>Min Price:</label>
-                <%= f.text_field :price_gteq, class: "form-control" %>
-            </div>
-            <div class="col-md-2">
-                <label>Max Price:</label>
-                <%= f.text_field :price_lteq, class: "form-control" %>
-            </div>
+    <div class="col-8">
+        <div class= "text-center mt-4">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">More Filters
+            <i class="fa" aria-hidden="true"></i> </button>
         </div>
-        <hr/>
 
-       <div class="row">
-            <div class="col-md-6">
-                <%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control" %>
+        <div class= "filters collapse" id="demo" >
+            <%= search_form_for @search, url: search_path, remote: true do |f| %>
+            <%= f.hidden_field :address_cont, value: @address %>
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <label>Price range:</label>
+                    <div id="slider"></div>
+                </div>
+                <div class="col-md-2">
+                    <label>Min Price:</label>
+                    <%= f.text_field :price_gteq, class: "form-control" %>
+                </div>
+                <div class="col-md-2">
+                    <label>Max Price:</label>
+                    <%= f.text_field :price_lteq, class: "form-control" %>
+                </div>
             </div>
-            <div class="col-md-6">
-                <%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control" %>
-            </div>
-            </div>
-        <hr/>
+            <hr/>
 
         <div class="row">
-        <div class="col-md-4">
-            <%= check_box_tag "q[room_type_eq_any][]", "Entire" %> Entire Room
-        </div>
-        <div class="col-md-4">
-            <%= check_box_tag "q[room_type_eq_any][]", "Private"%> Private
-        </div>
-        <div class="col-md-4">
-            <%= check_box_tag "q[room_type_eq_any][]", "Shared" %> Shared
-        </div>
-        </div>        
-        <hr/>
+                <div class="col-md-6">
+                    <%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control" %>
+                </div>
+                <div class="col-md-6">
+                    <%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control" %>
+                </div>
+                </div>
+            <hr/>
 
-        <div class="row">
-        <div class="col-md-4">
-            <div class="form-group">
-            <label>Accommodate</label>
-            <%= f.select :accommodate_gteq, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]], id: "accommodate", prompt: "Select...", class: "form-control" %>
-            <i class="fa fa-caret-down" id="drop" aria-hidden="true"></i>
+            <div class="row">
+                <div class="col-md-4">
+                    <%= check_box_tag "q[room_type_eq_any][]", "Entire" %> Entire Room
+                </div>
+                <div class="col-md-4">
+                    <%= check_box_tag "q[room_type_eq_any][]", "Private"%> Private
+                </div>
+                <div class="col-md-4">
+                    <%= check_box_tag "q[room_type_eq_any][]", "Shared" %> Shared
+                </div>
+            </div>        
+            <hr/>
+            
+            <div class="row"> 
+                <div class="col-md-4">
+                    <div class="form-group select">
+                    <label>Accommodate</label>
+                    <%= f.select :accommodate_gteq, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]], id: "accommodate", prompt: "Select...", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group select">
+                    <label>Bedrooms</label>
+                    <%= f.select :bedrooms_gteq, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]], id: "bedrooms", prompt: "Select...", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group select">
+                    <label>Bathrooms</label>
+                        <%= f.select :bathrooms_gteq, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]], id: "bathrooms", prompt: "Select...", class: "form-control" %>
+                    </div>
+                </div>
             </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-4">
+                    <%= f.check_box :is_tv_true %>TV  
+                </div>
+                <div class="col-md-4">
+                <%= f.check_box :is_kitchen_true %> Kitchen
+                </div>
+                <div class="col-md-4">
+                    <%= f.check_box :is_internet_true %> Internet
+                </div>
+                <div class="col-md-4">
+                    <%= f.check_box :is_heating_true %> Heating
+                </div>
+                <div class="col-md-4">
+                <%= f.check_box :is_air_true %> Air Conditioning
+                </div>
+            </div>
+            <hr/>
+            <div class="text-center">
+                <%= f.submit "Search", class: "btn btn-primary" %>
+            </div>
+            <% end %>
         </div>
-        <div class="col-md-4">
-            <div class="form-group">
-            <label>Bedrooms</label>
-            <%= f.select :bedrooms_gteq, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]], id: "bedrooms", prompt: "Select...", class: "form-control" %>
-            <i class="fa fa-caret-down" id="drop" aria-hidden="true"></i>
-            </div>
+
+        <div class="row" id="rooms_id">
+            <%= render "rooms" %>
         </div>
-        <div class="col-md-4">
-            <div class="form-group">
-            <label>Bathrooms</label>
-                <%= f.select :bathrooms_gteq, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]], id: "bathrooms", prompt: "Select...", class: "form-control" %>
-                <i class="fa fa-caret-down" id="drop" aria-hidden="true"></i>
-            </div>
-        </div>
-        </div>
-        <hr/>
-        <div class="row">
-            <div class="col-md-4">
-                <%= f.check_box :is_tv_true %>TV  
-            </div>
-            <div class="col-md-4">
-              <%= f.check_box :is_kitchen_true %> Kitchen
-            </div>
-            <div class="col-md-4">
-                <%= f.check_box :is_internet_true %> Internet
-            </div>
-            <div class="col-md-4">
-                <%= f.check_box :is_heating_true %> Heating
-            </div>
-            <div class="col-md-4">
-               <%= f.check_box :is_air_true %> Air Conditioning
-            </div>
-        </div>
-        <hr/>
-        <div class="col-4 offset-9">
-            <%= f.submit "Search", class: "btn btn-primary" %>
-        </div>
-        <% end %>
     </div>
 
-    <div class="row" id="rooms_id">
-        <%= render "rooms" %>
+    <div class="col-4" id="map_id">
+        <%= render "map" %>
     </div>
-
-</div>
-<div class="col-4" id="map_id">
-    <%= render "map" %>
 </div>
 
 <script>
@@ -123,10 +119,8 @@
       $('#start_date').datepicker("option", "maxDate", selected);
     }
   });
-</script>
 
-<script>
-$(document).ready(function() {
+  $(document).ready(function() {
     var slider = $("#slider").slider({
         range: true,
         min: 100,
@@ -139,5 +133,5 @@ $(document).ready(function() {
     });
     $("#q_price_gteq").val(slider.slider("values")[0]);
     $("#q_price_lteq").val(slider.slider("values")[1]);
-});
+   });
 </script>
