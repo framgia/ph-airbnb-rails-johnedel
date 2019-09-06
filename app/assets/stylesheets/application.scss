@@ -237,20 +237,9 @@ body {
     content: "\f13a";
   }
   
-
-  #map1 {
-    z-index: 3;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 27%;
-  }  
-
-
   #drop {
     position: absolute;
-    margin-top: -34px;
-    margin-left: 200px;
+    margin:-35px 0px 0px 200px;
     font-size: 25px;
     color: #00A699;
   }
@@ -261,4 +250,29 @@ body {
 
   .navbar a{
     font-weight: bold;
+   }
+
+    #map_id {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    #map1 {
+        z-index: 3;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+        border-width: 0px;
+        margin: 0px;
+        left: 0px;
+        top: 0px;
+        touch-action: pan-x pan-y;
+    }  
+      
+    .navbar {
+        z-index: 99;
     }
