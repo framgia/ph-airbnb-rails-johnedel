@@ -1,0 +1,32 @@
+    <%  unless @roomss.blank? %>
+    <div class= "row">
+        <% @roomss.each do |room| %>
+                <div class= "col-4 mt-4">
+                    <div class="card h-100">
+                        <%= image_tag room.photos.first.image.url, class: "card-img-top"%>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= link_to room.listing_name, room_path(room) %></h5>
+                            <p class="card-text">$<%= room.price %> - <%= room.home_type %> - <%= room.bedrooms %> beds</p>
+                            <div id="star-ratings_<%= room.id %>"></div>
+                            <div> <%= pluralize(room.reviews.count, "review") %> </div>
+                            <% if room.reviews.count == 0%>
+                                <% average_value = 0 %>
+                            <% else%>
+                                <% average_value = room.reviews.average(:star) %>
+                            <% end%>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $('#star-ratings_<%= room.id %>').raty({
+                        path: '/assets',
+                        readOnly: true,
+                        score: <%= average_value %>
+                    });
+                </script>
+        <% end %>
+    </div>
+     <% else %>
+        <h2><strong>No results</strong></h2>
+        <p> We couldn't find anything matches you search. Try searching other key word. </p>
+     <% end %>

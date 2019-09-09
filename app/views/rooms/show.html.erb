@@ -188,6 +188,30 @@
             <div id="map"></div>  
             </div>
         </div>
+        <hr >
+
+        <h3>Near by</h3>
+		<div class="row">
+            <% unless @room.nearbys(10).blank? %>
+			<% for room in @room.nearbys(10) %>		
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-heading">
+							<%= image_tag room.photos.first.image.url, class: "card-img-top" %>
+						</div>
+						<div class="card-body">
+							<%= link_to room.listing_name, room %><br>
+							(<%= room.distance.round(2) %> miles away)
+						</div>
+					</div>
+				</div>
+			<% end %>
+            <% else %>
+                 <div class="text-center">
+                    <h4>There are no nearby places.</h4>
+                </div>              
+            <% end%>
+		</div>
         <hr>
     </div>  
 
