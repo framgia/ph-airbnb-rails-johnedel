@@ -30,3 +30,7 @@ $(document).on('turbolinks:load', function(){
     });
 });
 
+$(function() {
+    $("#geo-input").geocomplete();
+  })
+

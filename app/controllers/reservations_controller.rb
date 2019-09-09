@@ -6,10 +6,8 @@ class ReservationsController < ApplicationController
     if current_user == @room.user
       flash[:alert] = "You can not book your own property"
     else
-      if @reservation.save
-        flash[:success] = "Succesfully Booked!"
-      else
-        flash[:alert] = "Something went wrong..."
+      if @reservation.save || reservations.any?
+        flash[:success] = "Succesfully Booked!"       
       end 
     end
     redirect_to @room 

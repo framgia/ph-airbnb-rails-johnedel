@@ -1,34 +1,36 @@
-<div class = "row"> 
-    <div class ="col-3">
-        <%= render 'listing_sidebar'%>
-    </div>
+<div class="container">
+    <div class = "row"> 
+        <div class ="col-3">
+            <%= render 'listing_sidebar'%>
+        </div>
 
-    <div class = "col-9">
-        <div class = "card mt-4">
-            <div class = "card-header text-white">
-                Your Listings 
-            </div>    
+        <div class = "col-9">
+            <div class = "card mt-4">
+                <div class = "card-header text-white">
+                    Your Listings 
+                </div>    
 
-            <div class="card-body">
-                <div class = "container ">
-                    <div class = "row">
-                        <% current_user.rooms.each do |room| %>
-                            <div class="col-3 mt-3">
-                                <% unless room.photos.blank? %>
-                                    <%= image_tag room.photos.first.image.url(:thumb), class: "img-thumbnail" %>
-                                <% else %>
-                                    <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
-                                <% end %>
-                            </div>
+                <div class="card-body">
+                    <div class = "container ">
+                        <div class = "row">
+                            <% current_user.rooms.each do |room| %>
+                                <div class="col-3 mt-3">
+                                    <% unless room.photos.blank? %>
+                                        <%= image_tag room.photos.first.image.url(:thumb), class: "img-thumbnail" %>
+                                    <% else %>
+                                        <%= image_tag 'noimage.png', style: 'height:75px;width:110px;', class: "img-thumbnail" %>
+                                    <% end %>
+                                </div>
 
-                            <div class="col-6 mt-3">
-                                <h5><%= room.listing_name %></h5>
-                            </div>
+                                <div class="col-6 mt-3">
+                                    <h5><%= room.listing_name %></h5>
+                                </div>
 
-                            <div class="col-3 mt-3">
-                                <%= link_to 'Update', listing_room_path(room), class: "btn btn-info" %>
-                            </div>
-                        <% end%>
+                                <div class="col-3 mt-3">
+                                    <%= link_to 'Update', listing_room_path(room), class: "btn btn-info" %>
+                                </div>
+                            <% end%>
+                        </div>
                     </div>
                 </div>
             </div>
