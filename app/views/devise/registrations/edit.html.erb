@@ -1,47 +1,49 @@
-<div class="row">
-  <div class="mt-4 col-3 text-center text-white">
-        <div class="card">
-            <div class="card-header"> Edit Profile </div>
-            <div class="card-body">
-                <%= link_to 'View My Profile', current_user, class: "btn btn-danger" %>
-            </div>
-        </div>
-    </div> 
-    
-    <div class="mt-4 col-9 text-center text-white">   
-        <div class="card">
-            <div class="card-header">Your Profile</div>
-            <div class="card-body">
-                <div class="container">
-                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                        <%= render "devise/shared/error_messages", resource: resource %>
-
-                        <div class="form-group ">
-                            <%= f.text_field :fullname, autofocus: true, placeholder: "Full Name", class: "form-control" %>
-                        </div>
-
-                        <div class="form-group">
-                            <%= f.text_field :phone_number, autofocus: true, placeholder: "Phone Number", class: "form-control" %>
-                        </div>
-
-                        <div class="form-group">
-                            <%= f.text_area :description, rows: 5, cols: 2, autofocus: true, placeholder: "Description", class: "form-control" %>
-                        </div>
-
-                        <div class="form-group">
-                            <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
-                        </div>
-
-                        <div class="form-group">
-                            <%= f.password_field :password, autocomplete: "new-password", placeholder:"New Password(leave blank if you don't want to change it)", class: "form-control" %>
-                        </div>
-
-                        <div class="mb-2 actions">
-                            <%= f.submit "Update", class: "btn btn-info" %>
-                        </div> 
-                    <% end %>
+<div class="container">
+    <div class="row">
+        <div class="mt-4 col-3 text-center text-white">
+            <div class="card">
+                <div class="card-header"> Edit Profile </div>
+                <div class="card-body">
+                    <%= link_to 'View My Profile', current_user, class: "btn btn-danger" %>
                 </div>
-            </div>    
+            </div>
+        </div> 
+        
+        <div class="mt-4 col-9 text-center text-white">   
+            <div class="card">
+                <div class="card-header">Your Profile</div>
+                <div class="card-body">
+                    <div class="container">
+                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                            <%= render "devise/shared/error_messages", resource: resource %>
+
+                            <div class="form-group ">
+                                <%= f.text_field :fullname, autofocus: true, placeholder: "Full Name", class: "form-control" %>
+                            </div>
+
+                            <div class="form-group">
+                                <%= f.text_field :phone_number, autofocus: true, placeholder: "Phone Number", class: "form-control" %>
+                            </div>
+
+                            <div class="form-group">
+                                <%= f.text_area :description, rows: 5, cols: 2, autofocus: true, placeholder: "Description", class: "form-control" %>
+                            </div>
+
+                            <div class="form-group">
+                                <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
+                            </div>
+
+                            <div class="form-group">
+                                <%= f.password_field :password, autocomplete: "new-password", placeholder:"New Password(leave blank if you don't want to change it)", class: "form-control" %>
+                            </div>
+
+                            <div class="mb-2 actions">
+                                <%= f.submit "Update", class: "btn btn-info" %>
+                            </div> 
+                        <% end %>
+                    </div>
+                </div>    
+            </div>
         </div>
     </div>
 </div>
