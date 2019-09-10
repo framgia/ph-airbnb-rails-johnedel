@@ -14,12 +14,21 @@
                     <%= f.password_field :password, autocomplete: "current-password",  placeholder: "Password",  class: "form-control" %>
                 </div>
 
-                <% if devise_mapping.rememberable? %>
-                    <div class="field">
-                        <%= f.check_box :remember_me %>
-                        <%= f.label :remember_me %>
-                    </div>
-                <% end %>
+                <div class="wrap">
+                    <span class="field">
+                        <% if devise_mapping.rememberable? %>     
+                            <%= f.check_box :remember_me %>
+                            <%= f.label :remember_me %>
+                        <% end %>
+                    </span>
+                
+
+                    <span class="pull-right">
+                        <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                            <%= link_to "Forgot password?", new_password_path(resource_name) %>
+                        <% end %>
+                    </span>
+                </div>
 
                 <div class="actions">
                     <%= f.submit "Log in", class: "btn btn-info" %>
@@ -29,6 +38,6 @@
                     <%= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path, class: "btn btn-primary" %>
                 </div>
             <% end %>
-        </div>
+        </>
     </div>
 </div>

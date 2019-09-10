@@ -10,39 +10,39 @@
                         <%= form_for @room  do |f| %>
                             <div class="row">
                                 <div class="col-4">
-                                    <div class="form-group">
+                                    <div class="form-group select">
                                         <%= f.label :home_type %> 
                                         <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Bed & Breakfast", "Bed & Breakfast"]],
-                                        id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        id: "home_type", prompt: "Select...", class: "form-control" %>
                                         
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="form-group">
+                                    <div class="form-group select">
                                         <%= f.label :room_type %>
                                         <%= f.select :room_type, [["Entire", "Entire"], ["Private", "Private"], ["Shared", "Shared"]],
-                                        id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        id: "home_type", prompt: "Select...", class: "form-control" %>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="form-group">
+                                    <div class="form-group select">
                                         <%= f.label :accommodate %> 
                                         <%= f.select :accommodate, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]],
-                                        id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        id: "home_type", prompt: "Select...", class: "form-control" %>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="form-group">
+                                    <div class="form-group select">
                                         <%= f.label :bedrooms %>
                                         <%= f.select :bedrooms, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]],
-                                        id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        id: "home_type", prompt: "Select...", class: "form-control" %>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="form-group">
+                                    <div class="form-group select">
                                         <%= f.label :bathrooms %>
                                         <%= f.select :bathrooms, [["1", "1"], ["2", "2"], ["3", "3"], ["4+", "4+"]],
-                                        id: "home_type", prompt: "Select...", class: "form-control" %> <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        id: "home_type", prompt: "Select...", class: "form-control" %>
                                     </div>
                                 </div>
                                 <div class="col-4">

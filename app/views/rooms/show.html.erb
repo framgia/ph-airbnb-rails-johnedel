@@ -225,6 +225,7 @@
                 <div class="card-body">
                 <!--<p>Coordinates: <%= @room.latitude %> <%= @room.longitude %></p>-->
                 <%= form_for([@room, @reservation]) do |f| %>
+                 <input type="hidden" data-unavailable="<%= @room.unavailable_dates.to_json %>" class="property-dates">
                     <div class="row">
                         <div class="col-6">
                             <label>Check In</label>
@@ -293,11 +294,27 @@ function initMap() {
 <script>
   $( function() {
 
+    var dateRange = JSON.parse(document.querySelector('.property-dates').dataset.unavailable);
+
+    var unavailDates = function(date) {
+        var allDates = [];
+        var start_date = $('#reservation_start_date').datepicker('getDate');
+        for (let i = 0; i < dateRange.length; i++) {
+            for (let j = 0; j < dateRange[i].length; j++) {
+                allDates.push(dateRange[i][j]);
+            }
+        }
+        var dateString = jQuery.datepicker.formatDate('yy-mm-dd', date);
+        return [allDates.indexOf(dateString) == -1];
+    }
+
     $( "#reservation_start_date" ).datepicker({
         dateFormat: 'dd-mm-yy',
         minDate: 0,
-        onSelect: function() { var start_date = $(this).datepicker('getDate');
-        
+        beforeShowDay: unavailDates,
+        onSelect: function(selected) {
+            $('#reservation_end_date').datepicker('option', 'minDate', selected)
+            $('#reservation_end_date').datepicker("setDate", start_date);
             var start_date = $('#reservation_start_date').datepicker('getDate');
             var end_date = $('#reservation_end_date').datepicker('getDate');
             var nights = Math.abs(start_date - end_date)/1000/60/60/24;
@@ -333,12 +350,13 @@ function initMap() {
     $( "#reservation_end_date" ).datepicker({
         dateFormat: 'dd-mm-yy',
         minDate: 0,
-        onSelect: function() { var end_date = $(this).datepicker('getDate');
-        
-        var start_date = $('#reservation_start_date').datepicker('getDate');
-        var end_date = $('#reservation_end_date').datepicker('getDate');        
-        var nights = Math.abs(start_date - end_date)/1000/60/60/24 + 1;
-        var total = nights * <%= @room.price %>;
+        beforeShowDay: unavailDates,
+        onSelect: function(selected) {
+            $('#reservation_start_date').datepicker("option", "maxDate", selected);
+            var start_date = $('#reservation_start_date').datepicker('getDate');
+            var end_date = $('#reservation_end_date').datepicker('getDate');        
+            var nights = Math.abs(start_date - end_date)/1000/60/60/24 + 1;
+            var total = nights * <%= @room.price %>;
      
 
             $.ajax({

@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
 
   before_action :authenticate_user!
-  
+  before_action :correct_user, except: [:show, :new, :create]
+    
   def index
   end
 
@@ -13,7 +14,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @photos = @room.photos
     @reservation = Reservation.new
-    @reviews = @room.reviews.where.not(host_id: current_user)
+    @reviews = @room.reviews.where.not(host_id: current_user).where(review_type: 1)
   end
 
   def create
@@ -73,5 +74,16 @@ class RoomsController < ApplicationController
   def room_params 
     params.require(:room).permit(:home_type, :room_type, :accommodate, :bedrooms, :bathrooms, :price, :listing_name,
     :summary, :is_tv, :is_kitchen, :is_internet, :is_heating, :is_air, :address, :is_active)
+  end
+
+  def correct_user
+    begin
+      @room = Room.find(params[:id])
+      unless current_user.id == @room.user_id
+        flash[:alert] = "You don't have permission"
+        redirect_to root_path
+      end
+    rescue
+    end
   end
 end

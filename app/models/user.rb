@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :fullname,  presence: true, length: { maximum: 50 }
   has_many :rooms, dependent: :destroy
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   has_many :active_relationships, class_name: "Review", foreign_key: "guest_id"
   has_many :passive_relationships, class_name: "Review", foreign_key: "host_id"
   has_many :guest_reviews, through: :active_relationships,  source: :guest

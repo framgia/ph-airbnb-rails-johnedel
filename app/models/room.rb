@@ -9,5 +9,11 @@ class Room < ApplicationRecord
   validates :bathrooms, presence: true, length: { maximum: 50 }
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
+
+  def unavailable_dates
+    reservations.pluck(:start_date, :end_date).map do |range|
+      (range[0]..range[1]).to_a
+    end
+  end
 end
