@@ -28,13 +28,8 @@
                                 <% end %>
                             </div>
                             <div class ="col-12 photo-feed mt-4">
-                                <div>
-                                <% @photos.each do |photo| %>
-                                    <%= image_tag photo.image.url(:thumb), class: "img-thumbnail mt-3 ml-3" %>   
-                                    <%= link_to photo, method: :delete, data: {confirm: "Are you sure?"} do %>
-                                        <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-                                    <% end %>
-                                <% end %>
+                                <div id="photos">
+                                    <%= render 'photos/photos_list'%>
                                 </div>
                             </div>
                         </div>
