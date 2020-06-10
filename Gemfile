@@ -5,7 +5,7 @@ ruby '2.5.1'
 
 gem 'ransack'
 gem 'jquery-ui-rails'
-gem 'geocoder', '~> 1.4'
+gem 'geocoder', '~> 1.6'
 gem 'aws-sdk'
 gem "paperclip", "~> 6.0.0"
 gem "font-awesome-rails"
